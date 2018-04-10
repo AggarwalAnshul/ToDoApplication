@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_stars"
+    tools:context="com.apkglobal.todoapplication.MainActivity">
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/listview"
+        android:scrollbars="vertical"
+        app:layout_heightPercent="70%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="80%" />
+
+    <Button
+        android:id="@+id/btn_new"
+        style="@style/btn_text"
+        android:layout_alignStart="@+id/listView"
+        android:layout_below="@+id/listView"
+        android:background="@drawable/btn_background"
+        android:text="New To-Do"
+        android:transitionName="@string/btn_transition"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="80%" />
+    <Button
+        android:id="@+id/btn_delete"
+        android:text="Delete all"
+        app:layout_widthPercent="10%"
+        app:layout_heightPercent="10%"
+        android:layout_below="@+id/listView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp" />
+
+</android.support.percent.PercentRelativeLayout>

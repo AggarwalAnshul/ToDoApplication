@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/img_stars"
+    android:layout_height="match_parent"
+    tools:context="com.apkglobal.todoapplication.CompletedTasks">
+
+    <ListView
+        android:id="@+id/listView_completed"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/listview"
+        android:scrollbars="vertical"
+        app:layout_heightPercent="70%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="80%" />
+
+</android.support.percent.PercentRelativeLayout>
