@@ -15,19 +15,24 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_layout"
-        android:title="Change Layout Format"
-        app:showAsAction="collapseActionView" />
-    <item
         android:id="@+id/action_delete_all"
         android:icon="@drawable/icon_delete"
         android:title="Delete all tasks"
         app:showAsAction="always" />
+
+
     <item
         android:id="@+id/action_help"
         android:icon="@drawable/ic_help"
         android:title="About"
         app:showAsAction="collapseActionView" />
+
+
+    <item
+        android:id="@+id/action_layout"
+        android:title="Change Layout Format"
+        app:showAsAction="collapseActionView" />
+
 
     <item
         android:id="@+id/action_share"
