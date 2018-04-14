@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">ToDoApplication</string>
+    <string name="app_name">ToDo</string>
     <string name="btn_transition">btn_transition</string>
 </resources>

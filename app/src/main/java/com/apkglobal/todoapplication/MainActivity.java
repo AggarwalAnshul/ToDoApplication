@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
@@ -69,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Toast.makeText(MainActivity.this, "" + i, Toast.LENGTH_SHORT).show();
-            /*    VibrationEffect effect = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE);
-                vibrator.vibrate(effect);*/
+                VibrationEffect effect = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE);
+                vibrator.vibrate(effect);
                 CheckBox checkbox = view.findViewById(R.id.ch_checkbox);
                 if (checkbox.isChecked())
                     Toast.makeText(MainActivity.this, "Chcekbox is checked...", Toast.LENGTH_SHORT).show();
