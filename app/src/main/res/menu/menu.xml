@@ -2,42 +2,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
- <!-- <item
-      android:id="@+id/action_addNew"
-      android:icon="@drawable/icon_addnew"
-      android:title="Add new To-Do"
-      android:transitionName="@string/btn_transition"
-      app:showAsAction="always" />-->
+    <!-- <item
+         android:id="@+id/action_addNew"
+         android:icon="@drawable/icon_addnew"
+         android:title="Add new To-Do"
+         android:transitionName="@string/btn_transition"
+         app:showAsAction="always" />-->
     <item
         android:id="@+id/action_display_completed"
         android:icon="@drawable/icon_success"
-        android:iconTint="#de0202"
-        android:title="Add Task"
+        android:title="Completed Tasks"
         app:showAsAction="always" />
- <item
-     android:id="@+id/action_layout"
-     android:title="Select layout"
-     app:showAsAction="collapseActionView" />
- <item
-     android:id="@+id/action_delete_all"
-     android:icon="@drawable/icon_delete"
-     android:iconTint="#000000"
-     android:iconTintMode="screen"
-     android:title="Delete all tasks"
-     app:showAsAction="always" />
- <item
-     android:id="@+id/action_help"
-     android:icon="@drawable/ic_help"
-     android:title="About"
-     app:showAsAction="collapseActionView" />
 
- <item
-     android:id="@+id/action_share"
-     android:title="Share"
-     app:showAsAction="collapseActionView" />
- <item
-     android:id="@+id/action_email"
-     android:title="Contact us"
-     app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_layout"
+        android:title="Change Layout layout"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_delete_all"
+        android:icon="@drawable/icon_delete"
+        android:title="Delete all tasks"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/ic_help"
+        android:title="About"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/action_share"
+        android:title="Share"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_email"
+        android:title="Contact us"
+        app:showAsAction="collapseActionView" />
 
 </menu>

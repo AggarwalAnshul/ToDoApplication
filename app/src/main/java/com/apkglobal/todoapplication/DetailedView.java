@@ -123,10 +123,11 @@ public class DetailedView extends AppCompatActivity {
                                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                                 calendar.set(Calendar.MINUTE, minute);
                                 alarmMgr.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
-                                Toast.makeText(DetailedView.this, "Reminder succesfull", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetailedView.this, "Reminder successfully Set ", Toast.LENGTH_SHORT).show();
                             }
                         }, mHour, mMinute, false);
                 timePickerDialog.show();
+                timePickerDialog.setTitle("Set a Reminder for this Task");
                 return true;
             case R.id.action_save:
                 Log.e("------------------->", "Saving the modified text");

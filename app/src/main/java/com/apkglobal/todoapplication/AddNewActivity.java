@@ -56,7 +56,7 @@ public class AddNewActivity extends AppCompatActivity {
         text = et_text.getText().toString();
         Log.e("TAG", title);
         Log.e("TAG", text);
-        if(!title.isEmpty() && !text.isEmpty())
+        if (!title.isEmpty() || !text.isEmpty())
             {
                 sd.execSQL("insert into todo_table(title, text, state) values('" + title.replaceAll("'", "''") + "', '" + text.replaceAll("'", "''") + "',0);");
         Toast.makeText(this, "Added text message: " + text, Toast.LENGTH_SHORT).show();

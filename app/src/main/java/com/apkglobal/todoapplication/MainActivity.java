@@ -27,6 +27,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.apkglobal.todoapplication.R.drawable.ic_help;
+
 public class MainActivity extends AppCompatActivity {
     FloatingActionButton btn_new;
     SQLiteDatabase sd;
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         int layout_preference = 2;
         sd = openOrCreateDatabase("todo", Context.MODE_PRIVATE, null);
         sd.execSQL("create table if not exists layout(number integer);");
+        Log.e("----------->", "Opening table layout");
         Cursor sc = sd.rawQuery("select * from layout", null);
         int cursor_count = sc.getCount();
         Log.e("--------->", "Cursor count: " + cursor_count);
@@ -251,9 +254,14 @@ public class MainActivity extends AppCompatActivity {
                     builder = new AlertDialog.Builder(MainActivity.this);
                 }
                 builder.setTitle("To-Do")
-                        .setIcon(R.drawable.ic_help)
-                        .setMessage("Long Press the To-Do to mark it done"
-                                + "\nPress the To-Do to display/edit it")
+                        .setIcon(getResources().getDrawable(ic_help))
+                        .setMessage("1. Press the ToDo(s) to open detailed View and edit them"
+                                + "\n2. Long Press the ToDo(s) to mark them Done and remove from current view"
+                                + "\n3. Press the Green Tick button on the top to view completed tasks"
+                                + "\n4. Press the Red Cross to delete all the tasks"
+                                + "\n5. Press the Green New button on the bottom right to add a new ToDo"
+                                + "\n6. Long Press the ToDo(s) in completed Section ( Green Tick) for options"
+                                + "\n\n7. Use CheckBoxes to check/uncheck the ToDo Temporarily")
                         .setPositiveButton("Got it !", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(MainActivity.this, "Glad to help", Toast.LENGTH_SHORT).show();
@@ -265,7 +273,6 @@ public class MainActivity extends AppCompatActivity {
                                 contactUs();
                             }
                         })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
                 return true;
 
@@ -408,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
         final View view = inflater.inflate(R.layout.seekbar_layout, (ViewGroup) findViewById(R.id.layoutDialog));
 
         final TextView textView = view.findViewById(R.id.tv_seek);
-        alertDialog.setIcon(R.drawable.ic_help);
+        alertDialog.setIcon(ic_help);
         alertDialog.setTitle("Select ToDo(s) per Row: ");
         alertDialog.setView(view);
 
@@ -416,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                textView.setText(i);
+                textView.setText("" + i);
             }
 
             @Override
@@ -438,6 +445,7 @@ public class MainActivity extends AppCompatActivity {
                */
                 SQLiteDatabase sd = openOrCreateDatabase("todo", Context.MODE_PRIVATE, null);
                 sd.execSQL("create table if not exists layout(number integer);");
+                sd.execSQL("delete from layout;");
                 sd.execSQL("insert into layout(number) values(" + progress + ");");
                 sd.close();
                 gridView.setNumColumns(progress);

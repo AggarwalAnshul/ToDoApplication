@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_delete_all_completed"
-        android:icon="@drawable/icon_dustbin"
+        android:icon="@drawable/icon_delete"
         android:title="Delete all Completed tasks"
         app:showAsAction="always"
         />

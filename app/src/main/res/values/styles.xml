@@ -14,7 +14,7 @@
 
     <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!--buttons color-->
-        <item name="colorAccent">@android:color/holo_orange_dark</item>
+        <item name="colorAccent">@color/background</item>
         <!--title and message color-->
         <item name="android:textColorPrimary">@android:color/white</item>
         <!--dialog background-->

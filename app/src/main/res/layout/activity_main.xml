@@ -41,13 +41,14 @@
         android:layout_alignParentEnd="true"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
-        android:transitionName="@string/btn_transition"
         app:backgroundTint="#43B05C"
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"
         app:layout_marginBottomPercent="5%"
         app:srcCompat="@drawable/icon_plus" />
+    <!-- android:transitionName="@string/btn_transition" // FOR FAB
+      -->
     <!-- <Button
          android:id="@+id/btn_new"
          style="@style/btn_text"
