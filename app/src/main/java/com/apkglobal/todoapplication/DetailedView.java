@@ -33,6 +33,7 @@ public class DetailedView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("Your To-Do");
         setContentView(R.layout.activity_detailed_view);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         editText_title = (EditText) findViewById(R.id.et_detailed_title);
@@ -84,6 +85,9 @@ public class DetailedView extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             case R.id.action_reminder:
                 Log.d("TAG------->", "Setting a reminder for the todo");
                 Toast.makeText(this, "I'm Here", Toast.LENGTH_SHORT).show();

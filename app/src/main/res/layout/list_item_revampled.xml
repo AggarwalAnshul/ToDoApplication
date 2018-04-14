@@ -15,7 +15,7 @@
         android:padding="15dp"
         android:paddingLeft="20dp"
         android:textAllCaps="true"
-        android:textColor="@color/listView_Color"
+        android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_heightPercent="10%" />
@@ -29,7 +29,7 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/btn_listview_title"
         android:padding="15dp"
-        android:textColor="@color/listView_Color"
+        android:textColor="#000000"
         android:textSize="18sp" />
 
     <CheckBox

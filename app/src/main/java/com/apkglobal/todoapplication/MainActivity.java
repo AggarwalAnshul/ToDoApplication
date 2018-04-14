@@ -7,19 +7,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         btn_new = (FloatingActionButton) findViewById(R.id.btn_new);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         TextView alterante = (TextView) findViewById(R.id.tv_alternate);
-
         btn_new.setImageResource(R.drawable.icon_addnew);
         //RENDERING Part
         fetch();  //populates the arrayLists Containing todo fetched from the Database
@@ -55,23 +56,40 @@ public class MainActivity extends AppCompatActivity {
         if (memo_text.size() == 0) {
             alterante.setVisibility(View.VISIBLE);
             gridView.setVisibility(View.GONE);
-            btn_new.setVisibility(View.GONE);
             Log.e("--------->", "Grid view is invisible");
         } else {
             alterante.setVisibility(View.INVISIBLE);
             gridView.setVisibility(View.VISIBLE);
-            btn_new.setVisibility(View.VISIBLE);
         }
         CustomGrid adapter = new CustomGrid(MainActivity.this, memo_title, memo_text);
         gridView.setAdapter(adapter);
+
+
+        //Chaning the layout according to user preferences:
+        int layout_preference = 2;
+        sd = openOrCreateDatabase("todo", Context.MODE_PRIVATE, null);
+        sd.execSQL("create table if not exists layout(number integer);");
+        Cursor sc = sd.rawQuery("select * from layout", null);
+        int cursor_count = sc.getCount();
+        Log.e("--------->", "Cursor count: " + cursor_count);
+        if (sc != null && cursor_count != 0) {
+            sc.moveToFirst();
+            {
+                layout_preference = sc.getInt(0);
+                Log.e("------------->", "Layout_Preference:   " + layout_preference);
+                // Toast.makeText(MainActivity.this, "Sednign data: "+findId, Toast.LENGTH_SHORT).show();
+            }
+        }
+        sd.close();
+        gridView.setNumColumns(layout_preference);
 
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Toast.makeText(MainActivity.this, "" + i, Toast.LENGTH_SHORT).show();
-                VibrationEffect effect = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE);
-                vibrator.vibrate(effect);
+              /*  VibrationEffect effect = VibrationEffect.createOneShot(2000, VibrationEffect.DEFAULT_AMPLITUDE);
+                vibrator.vibrate(effect);*/
                 CheckBox checkbox = view.findViewById(R.id.ch_checkbox);
                 if (checkbox.isChecked())
                     Toast.makeText(MainActivity.this, "Chcekbox is checked...", Toast.LENGTH_SHORT).show();
@@ -124,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putInt("ID", findId);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -211,6 +228,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_layout:
+                Log.d("----------->", "Changing the layout invoked...");
+                ShowDialog();
+                return true;
+                /*-----------------------------------------------------------*/
+
+                /*-----------------------------------------------------------*/
+
             case R.id.action_display_completed:
                 Log.d("TAG------->", "Displayed Completed Tasks");
                 Intent intent = new Intent(MainActivity.this, CompletedTasks.class);
@@ -376,4 +401,52 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }*/
+    public void ShowDialog() {
+
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        final LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+        final View view = inflater.inflate(R.layout.seekbar_layout, (ViewGroup) findViewById(R.id.layoutDialog));
+
+        final TextView textView = view.findViewById(R.id.tv_seek);
+        alertDialog.setIcon(R.drawable.ic_help);
+        alertDialog.setTitle("Select ToDo(s) per Row: ");
+        alertDialog.setView(view);
+
+        final SeekBar seekBar = view.findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                textView.setText(i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        alertDialog.setPositiveButton("Select", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                int progress = seekBar.getProgress();
+               /* Toast.makeText(MainActivity.this, "Final Value: " + progress, Toast.LENGTH_SHORT).show();
+               */
+                SQLiteDatabase sd = openOrCreateDatabase("todo", Context.MODE_PRIVATE, null);
+                sd.execSQL("create table if not exists layout(number integer);");
+                sd.execSQL("insert into layout(number) values(" + progress + ");");
+                sd.close();
+                gridView.setNumColumns(progress);
+            }
+        });
+        alertDialog.create();
+        alertDialog.show();
+
+    }
+
+
 }

@@ -10,7 +10,9 @@
         android:supportsRtl="true"
 
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
         <receiver android:name=".NotificationService" />
 
         <activity android:name=".SplashActivity">
