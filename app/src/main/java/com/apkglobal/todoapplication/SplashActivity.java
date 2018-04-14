@@ -1,13 +1,12 @@
 package com.apkglobal.todoapplication;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
-
-import static java.lang.Thread.sleep;
 
 public class SplashActivity extends AppCompatActivity {
     ProgressBar progressBar;
@@ -18,29 +17,22 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-       new Handler().postDelayed(new Runnable() {
+        ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(mProgressBar, "progress", 0, 100);
+        progressAnimator.setDuration(1000);
+        progressAnimator.setInterpolator(new LinearInterpolator());
+        progressAnimator.start();
+
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-       //         startProgress();
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                SplashActivity.this.finish(); //Prevents running back to splash screen
-
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                SplashActivity.this.startActivity(intent);
+                SplashActivity.this.finish();
             }
-        }, 200);
+        }, 950);
     }
 
-    private void startProgress() {
-        for (int progress = 1; progress <= 100; progress += 1)
-            try {
-                Log.e("Progress------>", "" + progress);
-                progressBar.setProgress(progress);
-                sleep(200);
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-    }
 }
 

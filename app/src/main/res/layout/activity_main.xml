@@ -4,36 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_stars"
+    android:background="#263238"
+    android:padding="8dp"
     tools:context="com.apkglobal.todoapplication.MainActivity">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/listview"
-        android:scrollbars="vertical"
-        app:layout_heightPercent="70%"
-        app:layout_marginTopPercent="10%"
-        app:layout_widthPercent="80%" />
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hapticFeedbackEnabled="true"
+        android:horizontalSpacing="0dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dip"
+        app:layout_marginBottomPercent="4%"
+        app:layout_marginTopPercent="5%" />
 
-    <Button
+    <TextView
+        android:id="@+id/tv_alternate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Your Tasks Appear here..."
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:visibility="invisible" />
+
+    <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/btn_new"
-        style="@style/btn_text"
-        android:layout_alignStart="@+id/listView"
-        android:layout_below="@+id/listView"
-        android:background="@drawable/btn_background"
-        android:text="New To-Do"
-        android:transitionName="@string/btn_transition"
-        app:layout_heightPercent="10%"
-        app:layout_widthPercent="80%" />
-    <Button
-        android:id="@+id/btn_delete"
-        android:text="Delete all"
-        app:layout_widthPercent="10%"
-        app:layout_heightPercent="10%"
-        android:layout_below="@+id/listView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="6dp" />
+        android:layout_gravity="bottom|center"
+        android:layout_margin="16dp"
+        android:transitionName="@string/btn_transition"
+        app:backgroundTint="#43B05C"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_marginBottomPercent="5%"
+        app:srcCompat="@drawable/icon_plus" />
+    <!-- <Button
+         android:id="@+id/btn_new"
+         style="@style/btn_text"
+         android:layout_below="@+id/gridView"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="10dp"
+         android:background="@drawable/btn_background"
+         android:text="New To-Do"
+         android:transitionName="@string/btn_transition"
+         app:layout_heightPercent="10%"
+         app:layout_widthPercent="80%" />-->
 
-</android.support.percent.PercentRelativeLayout>
+</android.support.percent.PercentRelativeLayout><!---->

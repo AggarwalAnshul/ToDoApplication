@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#263238"
     tools:context="com.apkglobal.todoapplication.SplashActivity">
 
 
     <ImageView
-        app:layout_widthPercent="40%"
-        app:layout_heightPercent="40%"
         android:id="@+id/img_splash"
-        android:src="@drawable/img_splash"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp" />
+        android:layout_marginTop="130dp"
+        android:src="@drawable/img_splash"
+        app:layout_heightPercent="40%"
+        app:layout_widthPercent="40%" />
+
 
     <ProgressBar
         android:id="@+id/progressBar"
-        app:layout_widthPercent="80%"
-        app:layout_heightPercent="10%"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_below="@+id/img_splash"
         android:layout_centerInParent="true"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="80%" />
 
 </android.support.percent.PercentRelativeLayout>

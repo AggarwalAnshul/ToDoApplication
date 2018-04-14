@@ -7,12 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import static android.R.attr.transitionName;
 
 public class AddNewActivity extends AppCompatActivity {
     SQLiteDatabase sd;
@@ -23,6 +22,8 @@ public class AddNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
+        setTitle("Add a new To-Do");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         et_title = (EditText) findViewById(R.id.et_memo_title);
         et_text = (EditText) findViewById(R.id.et_memo_text);
@@ -57,7 +58,7 @@ public class AddNewActivity extends AppCompatActivity {
         Log.e("TAG", text);
         if(!title.isEmpty() && !text.isEmpty())
             {
-        sd.execSQL("insert into todo_table(title, text, state) values('"+title+"', '"+text+"',0);");
+                sd.execSQL("insert into todo_table(title, text, state) values('" + title.replaceAll("'", "''") + "', '" + text.replaceAll("'", "''") + "',0);");
         Toast.makeText(this, "Added text message: " + text, Toast.LENGTH_SHORT).show();
     }
     else
@@ -66,8 +67,19 @@ public class AddNewActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void createdatabase() {
         sd = openOrCreateDatabase("todo", Context.MODE_PRIVATE, null);
         sd.execSQL("create table if not exists todo_table(id integer primary key autoincrement not null, title varchar, text varchar, state integer default 0);");
     }
+
 }

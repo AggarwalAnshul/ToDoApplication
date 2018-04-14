@@ -32,24 +32,22 @@
 
     <Button
         android:id="@+id/btn_goBack"
-        android:layout_toEndOf="@+id/tv_list_title"
-        android:layout_height="30dp"
         android:layout_width="30dp"
-        app:layout_marginTopPercent="1%"
+        android:layout_height="30dp"
+        android:layout_toEndOf="@+id/tv_list_title"
+        android:background="@drawable/icon_delete"
         app:layout_marginLeftPercent="3%"
         app:layout_marginRightPercent="2%"
-        android:onClick="goBack"
-        android:background="@drawable/icon_delete"
+        app:layout_marginTopPercent="1%"
         />
     <Button
         android:id="@+id/btn_delete_completed"
-        android:layout_toEndOf="@+id/btn_goBack"
         android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_toEndOf="@+id/btn_goBack"
+        android:background="@drawable/icon_back"
         android:drawableTint="#ff0000"
         android:textColor="#ff0000"
-        android:layout_height="30dp"
         app:layout_marginTopPercent="2%"
-        android:background="@drawable/icon_back"
-        android:onClick="goBack"
         />
 </android.support.percent.PercentRelativeLayout>

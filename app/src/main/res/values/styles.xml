@@ -12,6 +12,15 @@
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--buttons color-->
+        <item name="colorAccent">@android:color/holo_orange_dark</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--dialog background-->
+        <item name="android:windowBackground">@drawable/background_dialog</item>
+    </style>
+
     <style name="btn_text">
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textStyle">italic</item>
@@ -19,3 +28,4 @@
         <item name="android:textSize">15sp</item>
        </style>
 </resources>
+
