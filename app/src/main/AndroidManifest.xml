@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddNewActivity" />
+        <activity android:name=".Developer" />
         <activity android:name=".CompletedTasks" />
         <activity android:name=".DetailedView" />
     </application>

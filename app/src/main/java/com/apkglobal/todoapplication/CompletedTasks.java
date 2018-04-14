@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.apkglobal.todoapplication.R.drawable.ic_help;
+
 public class CompletedTasks extends AppCompatActivity {
     SQLiteDatabase sd;
     int index = 0;
@@ -137,12 +139,38 @@ public class CompletedTasks extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
+            case R.id.action_help:
+                Log.d("--------------->", "Popping the alert box");
+                AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(CompletedTasks.this, R.style.CustomDialogTheme);
+                } else {
+                    builder = new AlertDialog.Builder(CompletedTasks.this);
+                }
+                builder.setTitle("To-Do")
+                        .setIcon(getResources().getDrawable(ic_help))
+                        .setMessage("1. Long Press the ToDo(s) to generate options"
+                                + "\n\n  a) Delete the selected ToDo"
+                                + "\n\n  b) Mark this ToDo as Undone and move to ToDo list")
+                        .setPositiveButton("Got it !", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(CompletedTasks.this, "Glad to help", Toast.LENGTH_SHORT).show();
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("Not Sure ?", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                contactUs();
+                            }
+                        })
+                        .show();
+                return true;
+
             case R.id.action_delete_all_completed:
                 Log.d("TAG: --------->", "Delete all notes invoked...");
 
                 //asking for a confirmation, Creating a alert Dialogue
                 Log.e("------------>", "Working on the ALert");
-                AlertDialog.Builder builder;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     builder = new AlertDialog.Builder(CompletedTasks.this, R.style.CustomDialogTheme);
                 } else {
@@ -214,6 +242,13 @@ public class CompletedTasks extends AppCompatActivity {
             Toast.makeText(this, "No TO-DOs Added !", Toast.LENGTH_SHORT).show();
         }
         sd.close();
+    }
+
+    private void contactUs() {
+        Intent email = new Intent();
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"anshul.aggarwal.sfd@gmail.com"});
+        email.setType("email/rfc822");
+        startActivity(Intent.createChooser(email, "send Email Via"));
     }
 
 }

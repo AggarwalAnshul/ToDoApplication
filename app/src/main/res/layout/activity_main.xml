@@ -21,12 +21,21 @@
         app:layout_marginBottomPercent="4%"
         app:layout_marginTopPercent="5%" />
 
+    <ImageView
+        android:id="@+id/iv_alternate"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/tv_alternate"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_pen"
+        android:visibility="invisible"
+        app:layout_marginBottomPercent="4%" />
     <TextView
         android:id="@+id/tv_alternate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Your Tasks Appear here..."
+        android:text="Your New Tasks to Perform Appear here..."
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="15sp"

@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton btn_new;
     SQLiteDatabase sd;
     int index = 0;
+    ImageView iv_alternate;
     GridView gridView;
     ArrayList<String> memo_title = new ArrayList<String>();
     ArrayList<String> memo_text = new ArrayList<String>();
@@ -51,15 +53,19 @@ public class MainActivity extends AppCompatActivity {
         btn_new = (FloatingActionButton) findViewById(R.id.btn_new);
         vibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         TextView alterante = (TextView) findViewById(R.id.tv_alternate);
+        iv_alternate = (ImageView) findViewById(R.id.iv_alternate);
+
         btn_new.setImageResource(R.drawable.icon_addnew);
         //RENDERING Part
         fetch();  //populates the arrayLists Containing todo fetched from the Database
         Log.e("----------->", "Size of memo_text: " + memo_text.size() + "Size of memo_title: " + memo_title.size());
         if (memo_text.size() == 0) {
             alterante.setVisibility(View.VISIBLE);
+            iv_alternate.setVisibility(View.VISIBLE);
             gridView.setVisibility(View.GONE);
             Log.e("--------->", "Grid view is invisible");
         } else {
+            iv_alternate.setVisibility(View.INVISIBLE);
             alterante.setVisibility(View.INVISIBLE);
             gridView.setVisibility(View.VISIBLE);
         }
@@ -239,6 +245,9 @@ public class MainActivity extends AppCompatActivity {
 
                 /*-----------------------------------------------------------*/
 
+            case R.id.action_developer:
+                startActivity(new Intent(MainActivity.this, Developer.class));
+                return true;
             case R.id.action_display_completed:
                 Log.d("TAG------->", "Displayed Completed Tasks");
                 Intent intent = new Intent(MainActivity.this, CompletedTasks.class);
@@ -256,11 +265,11 @@ public class MainActivity extends AppCompatActivity {
                 builder.setTitle("To-Do")
                         .setIcon(getResources().getDrawable(ic_help))
                         .setMessage("1. Press the ToDo(s) to open detailed View and edit them"
-                                + "\n2. Long Press the ToDo(s) to mark them Done and remove from current view"
-                                + "\n3. Press the Green Tick button on the top to view completed tasks"
-                                + "\n4. Press the Red Cross to delete all the tasks"
-                                + "\n5. Press the Green New button on the bottom right to add a new ToDo"
-                                + "\n6. Long Press the ToDo(s) in completed Section ( Green Tick) for options"
+                                + "\n\n2. Long Press the ToDo(s) to mark them Done and remove from current view"
+                                + "\n\n3. Press the Green Tick button on the top to view completed tasks"
+                                + "\n\n4. Press the Red Cross to delete all the tasks"
+                                + "\n\n5. Press the Green New button on the bottom right to add a new ToDo"
+                                + "\n\n6. Long Press the ToDo(s) in completed Section ( Green Tick) for options"
                                 + "\n\n7. Use CheckBoxes to check/uncheck the ToDo Temporarily")
                         .setPositiveButton("Got it !", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -293,6 +302,8 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Deleting...", Toast.LENGTH_SHORT).show();
                                 deleteALL();
                                 Toast.makeText(MainActivity.this, "All Cleared Up Boss", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                MainActivity.this.finish();
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

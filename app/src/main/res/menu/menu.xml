@@ -16,7 +16,7 @@
 
     <item
         android:id="@+id/action_layout"
-        android:title="Change Layout layout"
+        android:title="Change Layout Format"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/action_delete_all"
@@ -36,6 +36,10 @@
     <item
         android:id="@+id/action_email"
         android:title="Contact us"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_developer"
+        android:title="Developer"
         app:showAsAction="collapseActionView" />
 
 </menu>

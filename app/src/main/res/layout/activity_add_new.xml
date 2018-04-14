@@ -3,42 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/img_stars"
     android:layout_height="match_parent"
+    android:background="@drawable/img_stars"
     tools:context="com.apkglobal.todoapplication.AddNewActivity">
 
     <EditText
         android:id="@+id/et_memo_title"
-        android:hint="Enter the Title"
-        android:textColorHint="#FFFFFF"
-        app:layout_widthPercent="80%"
-        app:layout_heightPercent="10%"
-        android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
-        app:layout_marginTopPercent="10%"/>
+        android:hint="Enter the Title"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="80%" />
 
     <EditText
         android:id="@+id/et_memo_text"
-        android:hint="What's this memo for ?"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"
         android:layout_height="wrap_content"
-        app:layout_widthPercent="80%"
+        android:layout_below="@+id/et_memo_title"
         android:layout_centerHorizontal="true"
+        android:hint="What's this memo for ?"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_marginTopPercent="10%"
-        android:layout_below="@+id/et_memo_title"/>
+        app:layout_widthPercent="80%" />
 
     <Button
-        app:layout_widthPercent="80%"
-        app:layout_heightPercent="10%"
         android:id="@+id/btn_add"
-        android:text="Insert"
-        android:background="@drawable/btn_background"
         style="@style/btn_text"
-        android:transitionName="@string/btn_transition"
-        app:layout_marginTopPercent="20%"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/et_memo_text"
-        android:layout_marginBottom="59dp" />
+        android:layout_marginBottom="59dp"
+        android:background="@drawable/btn_background"
+        android:text="Save"
+        android:transitionName="@string/btn_transition"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="20%"
+        app:layout_widthPercent="80%" />
 
 </android.support.percent.PercentRelativeLayout>
