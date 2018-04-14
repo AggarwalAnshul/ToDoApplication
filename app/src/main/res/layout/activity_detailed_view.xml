@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/detailed_bg"
+    tools:context="com.apkglobal.todoapplication.DetailedView">
+
+
+    <EditText
+        android:id="@+id/et_detailed_title"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="8%"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="7%"
+        android:background="@color/detailed_bg"
+        android:inputType="textCapWords"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:textColor="@color/listView_Color"
+        android:paddingRight="25dp"/>
+
+    <Button
+        android:id="@+id/btn_line"
+        android:background="#000000"
+        android:layout_centerHorizontal="true"
+        android:layout_height="1dp"
+        app:layout_widthPercent="65%"
+        android:layout_below="@+id/et_detailed_title"
+        />
+    <ScrollView
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="95%"
+        app:layout_marginTopPercent="2%"
+        android:layout_below="@+id/btn_line">
+    <EditText
+        android:id="@+id/et_detailed_text"
+       android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="30dp"
+        android:background="@color/detailed_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_line"
+        android:textSize="20sp"/>
+</ScrollView>
+</android.support.percent.PercentRelativeLayout>
