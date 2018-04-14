@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="130dp"
-        android:src="@drawable/icon_app"
+        android:src="@drawable/icon_app_old"
         app:layout_heightPercent="40%"
         app:layout_widthPercent="40%" />
 

@@ -10,8 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import static android.R.attr.id;
-
 
 /**
  * Created by Anshul Aggarwal on 25-01-2018.
@@ -66,7 +64,7 @@ public class NotificationService extends BroadcastReceiver {
                 .setTicker("You've got to a To-Do")
                 .setContentTitle(title)
                 .setContentText(text)
-                .addAction(R.drawable.img_splash, "Show me...", pIntent)
+                .addAction(R.drawable.icon_app_old, "Show me...", pIntent)
                 .setContentIntent(pIntent)
                 .setAutoCancel(true);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
