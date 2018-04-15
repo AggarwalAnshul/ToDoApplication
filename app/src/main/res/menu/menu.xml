@@ -28,10 +28,10 @@
         app:showAsAction="collapseActionView" />
 
 
-    <item
-        android:id="@+id/action_layout"
-        android:title="Change Layout Format"
-        app:showAsAction="collapseActionView" />
+    <!--   <item
+           android:id="@+id/action_layout"
+           android:title="Change Layout Format"
+           app:showAsAction="collapseActionView" />-->
 
 
     <item

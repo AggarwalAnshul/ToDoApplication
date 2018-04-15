@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_stars"
+    android:background="@drawable/cut"
     android:padding="8dp"
     tools:context="com.apkglobal.todoapplication.CompletedTasks">
 
-    <GridView
-
+    <ListView
+        android:id="@+id/listView_completed"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/listview"
+        android:divider="#24ffffff"
+        android:dividerHeight="1dp"
+        app:layout_heightPercent="87%"
+        app:layout_marginBottomPercent="2%"
+        app:layout_marginTopPercent="5%"
+        app:layout_widthPercent="100%" />
+    />
+    <!--<GridView
         android:id="@+id/gridView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:hapticFeedbackEnabled="true"
         android:horizontalSpacing="0dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="10dip" />
+        android:verticalSpacing="10dip"
+        app:layout_marginBottomPercent="4%"
+        app:layout_marginTopPercent="5%" />-->
+
+    <ImageView
+        android:id="@+id/iv_alternate_completed"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/tv_alternate_completed"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_done"
+        android:visibility="invisible"
+        app:layout_marginBottomPercent="2%" />
 
     <TextView
         android:id="@+id/tv_alternate_completed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="All Your Completed Tasks Appear here..."
+        android:text="Your completed task appear here ..."
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         android:textStyle="italic"
         android:visibility="invisible" />
 
-</RelativeLayout>
+
+    <!-- android:transitionName="@string/btn_transition" // FOR FAB
+      -->
+    <!-- <Button
+         android:id="@+id/btn_new"
+         style="@style/btn_text"
+         android:layout_below="@+id/gridView"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="10dp"
+         android:background="@drawable/btn_background"
+         android:text="New To-Do"
+         android:transitionName="@string/btn_transition"
+         app:layout_heightPercent="10%"
+         app:layout_widthPercent="80%" />-->
+
+</android.support.percent.PercentRelativeLayout><!---->

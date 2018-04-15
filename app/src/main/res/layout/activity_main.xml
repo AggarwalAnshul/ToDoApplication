@@ -4,13 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_stars"
+    android:background="@drawable/cut"
     android:padding="8dp"
     tools:context="com.apkglobal.todoapplication.MainActivity">
 
-    <GridView
+    <ListView
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/listview"
+        android:divider="#24ffffff"
+        android:dividerHeight="1dp"
+        app:layout_heightPercent="87%"
+        app:layout_marginBottomPercent="2%"
+        app:layout_marginTopPercent="5%"
+        app:layout_widthPercent="100%" />
+    />
+    <!--<GridView
         android:id="@+id/gridView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:hapticFeedbackEnabled="true"
@@ -19,7 +30,7 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dip"
         app:layout_marginBottomPercent="4%"
-        app:layout_marginTopPercent="5%" />
+        app:layout_marginTopPercent="5%" />-->
 
     <ImageView
         android:id="@+id/iv_alternate"
@@ -29,7 +40,7 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_pen"
         android:visibility="invisible"
-        app:layout_marginBottomPercent="4%" />
+        app:layout_marginBottomPercent="2%" />
     <TextView
         android:id="@+id/tv_alternate"
         android:layout_width="match_parent"

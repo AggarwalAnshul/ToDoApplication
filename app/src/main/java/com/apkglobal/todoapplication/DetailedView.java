@@ -89,8 +89,8 @@ public class DetailedView extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.action_reminder:
-                Log.d("TAG------->", "Setting a reminder for the todo");
-                Toast.makeText(this, "I'm Here", Toast.LENGTH_SHORT).show();
+                Log.d("TAG------->", "Setting a reminder for the todo");/*
+                Toast.makeText(this, "I'm Here", Toast.LENGTH_SHORT).show();*/
                 // Get Current Time
                 final Calendar c = Calendar.getInstance();
                 int mHour = c.get(Calendar.HOUR_OF_DAY);
@@ -126,8 +126,9 @@ public class DetailedView extends AppCompatActivity {
                                 Toast.makeText(DetailedView.this, "Reminder successfully Set ", Toast.LENGTH_SHORT).show();
                             }
                         }, mHour, mMinute, false);
-                timePickerDialog.show();
                 timePickerDialog.setTitle("Set a Reminder for this Task");
+                timePickerDialog.setMessage("Set a Reminder for this Task");
+                timePickerDialog.show();
                 return true;
             case R.id.action_save:
                 Log.e("------------------->", "Saving the modified text");

@@ -24,10 +24,13 @@ public class CustomGrid extends BaseAdapter {
         context = c;
         this.memo_title = memo_title;
         this.memo_text = memo_text;
+        Log.e("------------>", "CustomGrid: SizeTitle: " + memo_title.size());
+        Log.e("------------>", "CustomGrid: SizeText: " + memo_text.size());
     }
 
     @Override
     public int getCount() {
+        Log.e("--------------->", "from the overrid function getCount(), size: " + memo_title.size());
         return memo_title.size();
     }
 
@@ -49,16 +52,16 @@ public class CustomGrid extends BaseAdapter {
         if (view == null) {
             grid = new View(context);
             grid = inflater.inflate(R.layout.list_item_revampled, null);
-            TextView tv_title = (TextView) grid.findViewById(R.id.tv_list_title);
-            TextView tv_text = (TextView) grid.findViewById(R.id.tv_list_text);
+            TextView tv_title = grid.findViewById(R.id.tv_list_title);
+            TextView tv_text = grid.findViewById(R.id.tv_list_text);
             Log.e("---------->", "Loop: " + a);
-            Log.e("---------->", "i: " + i + " memo_title: " + memo_title.get(i));
-            Log.e("---------->", "i: " + (i) + " memo_text: " + memo_text.get(i));
+            Log.e("---------->", "i: " + i + " memo_title: " + memo_title.get(a));
+            Log.e("---------->", "i: " + (i) + " memo_text: " + memo_text.get(a));
             a += 1;
             tv_title.setText(memo_title.get(i));
             tv_text.setText(memo_text.get(i));
         } else
-            grid = (View) view;
+            grid = view;
         return grid;
 
     }
