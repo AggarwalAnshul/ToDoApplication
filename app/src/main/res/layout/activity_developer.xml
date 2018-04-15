@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/forest"
+    tools:context="com.apkglobal.todoapplication.Developer">
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        android:background="#1565C0"
+        android:text="Heya Fellas !"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/profile"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#00eaeaea" />
+
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        android:background="#1565C0"
+        android:text="You know where to find me "
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    </android.support.percent.PercentRelativeLayout>
